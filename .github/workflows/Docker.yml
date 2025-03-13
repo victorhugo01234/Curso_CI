@@ -18,3 +18,10 @@ jobs:
       with: 
         username: victorhugo01234
         password: ${{ secrets.PASSWORD_DOCKER }}
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v6.15.0
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: victorhugo01234/go_ci:${{ github.ref_name }}
